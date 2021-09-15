@@ -13,6 +13,9 @@ function Address(street,city,county){
 Contact.prototype.fullName=function(){
   return this.firstName+ " " +this.lastName;
 };
+Address.prototype.fullAddress=function(){
+  return this.street + ", "+ this.city + ", " + this.county;
+};
 //user interface logic
 $(document).ready(function(){
   $("#add-address").click(function(){
@@ -56,7 +59,7 @@ $(document).ready(function(){
       $(".last-name").text(newContact.lastName);
       $("ul#addresses").text("");
       newContact.addresses.forEach(function(address){
-        $("ul#addresses").append("<li>"+ address.street+", "+address.city+", "+address.county+"</li>");
+        $("ul#addresses").append("<li>"+ address.fullAddress()+"</li>");
       });
     });
 
