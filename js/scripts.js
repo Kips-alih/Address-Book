@@ -17,6 +17,13 @@ Address.prototype.fullAddress=function(){
   return this.street + ", "+ this.city + ", " + this.county;
 };
 //user interface logic
+function resetFields(){
+  $("input#new-first-name").val("");
+  $("input#new-last-name").val("");
+  $("input.new-street").val("");
+  $("input.new-city").val("");
+  $("input.new-county").val("");
+}
 $(document).ready(function(){
   $("#add-address").click(function(){
     $("#new-addresses").append('<div class="new-address">'+
@@ -34,6 +41,8 @@ $(document).ready(function(){
                                   '</div>'+
                                 '</div>');
   });
+
+
   $("form#new-contact").submit(function(event){
     event.preventDefault();
 
@@ -62,15 +71,6 @@ $(document).ready(function(){
         $("ul#addresses").append("<li>"+ address.fullAddress()+"</li>");
       });
     });
-
-    $("input#new-first-name").val("");
-    $("input#new-last-name").val("");
-    $("input.new-street").val("");
-    $("input.new-city").val("");
-    $("input.new-county").val("");
-
-
-
-
+      resetFields();
   });
 });
